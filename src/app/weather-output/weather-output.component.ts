@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ComponentInteractionService } from '../component-interaction.service';
-declare var $:any;
 
 @Component({
   selector: 'app-weather-output',
