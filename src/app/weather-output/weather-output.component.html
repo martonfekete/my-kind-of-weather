@@ -1,0 +1,6 @@
+<div *ngIf="outputInit" class="margin-bottom">
+	<p class="margin-bottom">Weather is {{isNice? 'Nice' : 'Not nice'}}</p>
+	<div">
+		<img id="imageRotate" class="crossRotate" [class.spin]="!isNice" src="http://vignette4.wikia.nocookie.net/legomessageboards/images/1/19/Thumbs_Up.png/revision/latest?cb=20140411232258" />
+	</div> 
+</div>

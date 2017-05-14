@@ -1,1 +1,26 @@
-/* You can add global styles to this file, and also import other style files */
+.margin-bottom {
+	margin-bottom: 1em;
+}
+.inline-margin {
+	margin-top:.5em;
+}
+.margin-right {
+	margin-right: 1em;
+}
+
+.crossRotate {
+    -webkit-transition-duration: 1s;
+	-moz-transition-duration: 1s;
+	-o-transition-duration: 1s;
+	transition-duration: 1s;
+	-webkit-transition-property: -webkit-transform;
+	-moz-transition-property: -moz-transform;
+	-o-transition-property: -o-transform;
+	transition-property: transform;
+}
+
+.crossRotate.spin {
+	-webkit-transform: rotate(180deg);
+	-moz-transform: rotate(180deg);
+	-o-transform: rotate(180deg);
+}

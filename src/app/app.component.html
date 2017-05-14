@@ -1,3 +1,19 @@
-<h1>
-  {{title}}
-</h1>
+<div class="container-fluid">
+	<div class="row margin-bottom ">
+		<div class="col-sm-8 xs-12">
+			<h1 class="margin-bottom text-center">
+			  {{title}}
+			</h1>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-8 xs-12">
+		<app-weather-input (isNiceUpdate)="outInit($event)">
+		</app-weather-input>
+		</div>
+		<div class="col-sm-4 xs-12">
+		<app-weather-output [outputInit]="requested">
+		</app-weather-output>
+		</div>
+	</div>
+</div>

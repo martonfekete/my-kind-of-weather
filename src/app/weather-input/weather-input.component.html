@@ -1,0 +1,92 @@
+<div class="row margin-bottom">
+	<div class="col-sm-12 col-md-6">
+		<div class="form-horizontal">
+			<div class="form-group">
+				<label for="cityInput" class="col-sm-2 control-label">City</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="cityInput" placeholder="Provide city" [(ngModel)]="city" (blur)="cityChanges()" />
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-sm-12 col-md-6">
+		<strong class="margin-right">Units</strong>
+		<div class="btn-group" role="group">
+			<button type="button" class="btn btn-default" *ngFor="let unit of units" [class.active]="unit.val === tempUnit" (click)="unitUpdated(unit.val)">{{unit.label}}</button>
+		</div>
+	</div>
+</div>
+
+<div class="form-horizontal">
+	<div class="form-group">
+		<label class="col-sm-2 col-md-1 control-label">Humidity</label>
+		<div class="col-sm-5 col-md-3">
+			<select [(ngModel)]="params.humidOp" (ngModelChange)="paramsChanged()" class="form-control">
+				<option *ngFor="let op of operators" value="{{op.val}}">{{op.label}}</option>
+			</select> 
+		</div>
+		<div class="col-sm-5 col-md-3">
+			<input type="number" placeholder="{{params.humidOp === 'between' ? 'Minimum humidity' : 'Humidity value'}}" [(ngModel)]="params.humidMin" (ngModelChange)="paramsChanged()" class="form-control" [disabled]="params.humidOp === 'nan'" />
+		</div>
+		<span *ngIf="params.humidOp === 'between'" class="col-sm-7 col-md-1 form-control-static text-center">and</span>
+		<div *ngIf="params.humidOp === 'between'" class="col-sm-5 col-md-3">
+			<input type="number" placeholder="Maximum humidity" [(ngModel)]="params.humidMax" (ngModelChange)="paramsChanged()" class="form-control" />
+		</div>
+	</div>
+</div>
+
+<div class="form-horizontal">
+	<div class="form-group">
+		<label class="col-sm-2 col-md-1 control-label">Pressure</label>
+		<div class="col-sm-5 col-md-3">
+			<select [(ngModel)]="params.pressOp" (ngModelChange)="paramsChanged()" class="form-control">
+				<option *ngFor="let op of operators" value="{{op.val}}">{{op.label}}</option>
+			</select>
+		</div>
+		<div class="col-sm-5 col-md-3">
+			<input type="number" placeholder="{{params.pressOp === 'between' ? 'Minimum pressure' : 'Pressure value'}}" [(ngModel)]="params.pressMin" (ngModelChange)="paramsChanged()" class="form-control" [disabled]="params.pressOp === 'nan'" />
+		</div>
+		<span *ngIf="params.pressOp === 'between'" class="col-sm-7 col-md-1 form-control-static text-center">and</span>
+		<div *ngIf="params.pressOp === 'between'" class="col-sm-5 col-md-3">
+			<input type="number" placeholder="Maximum pressure" [(ngModel)]="params.pressMax" (ngModelChange)="paramsChanged()" class="form-control" />
+		</div>
+	</div>
+</div>
+
+<div class="form-horizontal">
+	<div class="form-group">
+		<label class="col-sm-2 col-md-1 control-label">Temperature</label>
+		<div class="col-sm-5 col-md-3">
+			<select [(ngModel)]="params.tempOp" (ngModelChange)="paramsChanged()" class="form-control">
+				<option *ngFor="let op of operators" value="{{op.val}}">{{op.label}}</option>
+			</select> 
+		</div>
+		<div class="col-sm-5 col-md-3">
+			<input type="number" placeholder="{{params.tempOp === 'between' ? 'Minimum temperature' : 'Temperature value'}}" [(ngModel)]="params.tempMin" (ngModelChange)="paramsChanged()" class="form-control" [disabled]="params.tempOp === 'nan'" />
+		</div>
+		<span *ngIf="params.tempOp === 'between'" class="col-sm-7 col-md-1 form-control-static text-center">and</span>
+		<div *ngIf="params.tempOp === 'between'" class="col-sm-5 col-md-3">
+			<input type="number" placeholder="Minimum temperature" [(ngModel)]="params.tempMax" (ngModelChange)="paramsChanged()"  class="form-control"/>
+		</div>
+	</div>
+</div>
+
+<div class="form-horizontal margin-bottom">
+	<div class="form-group">
+		<label class="col-sm-2 col-md-1 control-label">Wind</label>
+		<div class="col-sm-5 col-md-3">
+			<select [(ngModel)]="params.windOp" (ngModelChange)="paramsChanged()" class="form-control">
+				<option *ngFor="let op of operators" value="{{op.val}}">{{op.label}}</option>
+			</select> 
+		</div>
+		<div class="col-sm-5 col-md-3">
+			<input type="number" placeholder="{{params.windOp === 'between' ? 'Minimum speed' : 'Speed value'}}" [(ngModel)]="params.windMin" (ngModelChange)="paramsChanged()" class="form-control" [disabled]="params.windOp === 'nan'" />
+		</div>
+		<span *ngIf="params.windOp === 'between'" class="col-sm-7 col-md-1 form-control-static text-center">and</span>
+		<div *ngIf="params.windOp === 'between'" class="col-sm-5 col-md-3">
+			<input type="number" placeholder="Maximum speed" [(ngModel)]="params.windMax" (ngModelChange)="paramsChanged()" class="form-control" />
+		</div>
+	</div>
+</div>
+
+<button (click)="isGood()" class="btn btn-default center-block btn-lg btn-primary">{{outputInitiated ? 'Adjust values to update verdict' : 'Is it nice?'}}</button>

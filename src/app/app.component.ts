@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app works!';
+  title = 'Is it my kind of weather?';
+  requested: boolean = false;
+  constructor() {}
+
+  outInit(event: boolean) {
+  	this.requested = event;
+  }
 }
